@@ -1,0 +1,1 @@
+﻿{"ContextClassName":"PersondbContext","DefaultDacpacSchema":null,"IdReplace":false,"IncludeConnectionString":true,"OutputPath":"Model","ProjectRootNamespace":"PersonDb","SelectedToBeGenerated":0,"Tables":["dbo.Person","dbo.Phone"],"UseDatabaseNames":false,"UseFluentApiOnly":false,"UseHandleBars":false,"UseInflector":false}
