@@ -16,6 +16,7 @@ namespace PersonDb.Model
         {
             Name = name;
             Age = age;
+            Phone = new HashSet<Phone>();
         }
 
         public Person(string name, short? age, ICollection<Phone> phone)
@@ -26,7 +27,7 @@ namespace PersonDb.Model
         }
 
         public long Id { get; set; }
-        [Column(TypeName = "nchar(10)")]
+        [Column(TypeName = "varchar(50)")]
         public string Name { get; set; }
         public short? Age { get; set; }
 
@@ -36,6 +37,10 @@ namespace PersonDb.Model
         public override string ToString()
         {
             return $"{Name} {Age}";
+        }
+        public string ShowData()
+        {
+            return $"{Id}, {Name}, {Age}";
         }
     }
 }

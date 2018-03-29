@@ -7,6 +7,16 @@ namespace PersonDb.Model
 {
     public partial class Phone
     {
+        public Phone()
+        {
+        }
+
+        public Phone(string type, string number)
+        {
+            Type = type;
+            Number = number;
+        }
+
         public long Id { get; set; }
         [Column(TypeName = "nchar(10)")]
         public string Type { get; set; }
