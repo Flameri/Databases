@@ -21,7 +21,7 @@ namespace BankDB.Repositories
         //Etsi tietty pankki
         public Bank GetBankById(int id)
         {
-            var bank = _context.Bank.FirstOrDefault(p => p.Id == id);
+            var bank = _context.Bank.FirstOrDefault(b => b.Id == id);
             return bank;
         }
 
@@ -48,7 +48,7 @@ namespace BankDB.Repositories
         //Delete Bank
         public void Delete(int id)
         {
-            var delBank = _context.Bank.FirstOrDefault(p => p.Id == id);
+            var delBank = _context.Bank.FirstOrDefault(b => b.Id == id);
             if (delBank != null)
                 _context.Bank.Remove(delBank);
             _context.SaveChanges();

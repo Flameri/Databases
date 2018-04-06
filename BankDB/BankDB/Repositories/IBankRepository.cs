@@ -12,6 +12,5 @@ namespace BankDB.Repositories
         void Create();
         void Update();
         void Delete();
-
     }
 }

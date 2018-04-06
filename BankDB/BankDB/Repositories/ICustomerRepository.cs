@@ -12,11 +12,6 @@ namespace BankDB.Repositories
         void CreateCustomer();
         void UpdateCustomer();
         void DeleteCustomer();
-
-        Account GetAccountById();
-        void CreateAccount();
-        void UpdateAccount();
-        void DeleteAccount();
-
+        
     }
 }
