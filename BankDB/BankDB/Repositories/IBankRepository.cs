@@ -7,10 +7,10 @@ namespace BankDB.Repositories
 {
     interface IBankRepository
     {
-        List<Bank> Read();
-        Bank GetBankById();
-        void Create();
-        void Update();
-        void Delete();
+        List<Bank> GetTransactionsFromBankCustomersAccounts();
+        Bank GetBankById(long id);
+        void Create(Bank bank);
+        void Update(Bank bank);
+        void Delete(int id);
     }
 }

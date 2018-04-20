@@ -7,6 +7,10 @@ namespace BankDB.Models
 {
     public partial class Transaction
     {
+        public Transaction()
+        {
+        }
+
         public Transaction(decimal? amount, DateTime? timeStamp)
         {
             Amount = amount;
@@ -24,5 +28,11 @@ namespace BankDB.Models
         [ForeignKey("Iban")]
         [InverseProperty("Transaction")]
         public Account IbanNavigation { get; set; }
+
+        //Tostring override
+        public override string ToString()
+        {
+            return $"{Amount}, {TimeStamp}";
+        }
     }
 }

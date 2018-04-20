@@ -26,9 +26,9 @@ namespace BankDB.Repositories
         }
 
         //Create new Account
-        public void CreateAccount(Account account
+        public void CreateAccount(Account account)
         {
-            _context.Add(account);
+            _context.Account.Add(account);
             _context.SaveChanges();
         }
        
@@ -39,6 +39,29 @@ namespace BankDB.Repositories
             if (delAccount!= null)
                 _context.Account.Remove(delAccount);
             _context.SaveChanges();
+        }
+
+        //Creating transactions
+        public void CreateTransaction(Transaction transaction)
+        {
+            try
+            {
+                //Lisätään tapahtumiin rivi
+                _context.Transaction.Add(transaction);
+                //Etsitään oikea tili jota päivitetään
+                var account = GetAccountById(transaction.Iban);
+                //Lasketaan uusi saldo
+                account.Balance += transaction.Amount;
+
+                //update Account table
+                _context.Account.Update(account);
+                //tallennettaan muutokset tietokantaan
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

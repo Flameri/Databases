@@ -28,7 +28,7 @@ namespace BankDB.Repositories
         //Create a new customer
         public void CreateCustomer(Customer customer)
         {
-            _context.Add(customer);
+            _context.Customer.Add(customer);
             _context.SaveChanges();
         }
         

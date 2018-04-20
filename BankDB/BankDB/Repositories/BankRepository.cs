@@ -12,14 +12,18 @@ namespace BankDB.Repositories
         private readonly BankdbContext _context = new BankdbContext();
 
         //Tulosta Pankit
-        public List<Bank> Read()
+        public List<Bank> GetTransactionsFromBankCustomersAccounts()
         {
-            List<Bank> banks = _context.Bank.ToListAsync().Result;
+            List<Bank> banks = _context.Bank
+                .Include(b => b.Customer)
+                .Include(b => b.Account)
+                .Include(b => b.Account).ThenInclude(a => a.Transaction)
+                .ToListAsync().Result;
             return banks;
         }
 
         //Etsi tietty pankki
-        public Bank GetBankById(int id)
+        public Bank GetBankById(long id)
         {
             var bank = _context.Bank.FirstOrDefault(b => b.Id == id);
             return bank;
@@ -28,14 +32,14 @@ namespace BankDB.Repositories
         //Add Bank
         public void Create(Bank bank)
         {
-            _context.Add(bank);
+            _context.Bank.Add(bank);
             _context.SaveChanges();
         }
 
         //Update Bank
-        public void Update(Bank bank, int id)
+        public void Update(Bank bank)
         {
-            var updateBank = GetBankById(id);
+            var updateBank = GetBankById(bank.Id);
             if (updateBank != null)
             {
                 updateBank.Name = bank.Name;

@@ -4,19 +4,13 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using BankDB.Models;
+using BankDB.Repositories;
 
 namespace BankDB.Repositories
 {
     class TransactionRepository : ITransactionRepository
     {
         private readonly BankdbContext _context = new BankdbContext();
-
-        //Find specific transaction
-        public Transaction GetTransactionById(int id)
-        {
-            var transaction = _context.Account.FirstOrDefault(t => t.Id == id);
-            return transaction;
-        }
 
         //Print Transactions
         public List<Transaction> Read()
@@ -25,11 +19,12 @@ namespace BankDB.Repositories
             return transactions;
         }
 
-        //Creating transactions
-        public void CreateTransaction(Transaction transaction)
+        
+        ////Find specific transaction
+        public Transaction GetTransactionById(int id)
         {
-            _context.Add(transaction);
-            _context.SaveChanges();
+            var transaction = _context.Transaction.FirstOrDefault(t => t.Id == id);
+            return transaction;
         }
     }
 }

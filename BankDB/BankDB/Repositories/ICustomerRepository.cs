@@ -8,10 +8,10 @@ namespace BankDB.Repositories
     interface ICustomerRepository
     {
         List<Customer> Read();
-        Customer GetCustomerById();
-        void CreateCustomer();
-        void UpdateCustomer();
-        void DeleteCustomer();
+        Customer GetCustomerById(int id);
+        void CreateCustomer(Customer customer);
+        void UpdateCustomer(Customer customer, int id);
+        void DeleteCustomer(int id);
         
     }
 }

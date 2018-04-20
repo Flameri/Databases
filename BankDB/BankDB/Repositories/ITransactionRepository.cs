@@ -8,7 +8,7 @@ namespace BankDB.Repositories
     interface ITransactionRepository
     {
         List<Transaction> Read();
-        Transaction GetTransactionById();
-        void CreateTransaction();
+        //Transaction GetTransactionById(string iban);
+        
     }
 }

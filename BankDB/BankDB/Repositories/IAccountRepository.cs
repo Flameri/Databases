@@ -8,9 +8,9 @@ namespace BankDB.Repositories
     interface IAccountRepository
     {
         List<Account> Read();
-        Account GetAccountById();
-        void CreateAccount();
-        void UpdateAccount();
-        void DeleteAccount();
+        Account GetAccountById(string iban);
+        void CreateAccount(Account account);
+        void DeleteAccount(string iban);
+        void CreateTransaction(Transaction transaction);
     }
 }

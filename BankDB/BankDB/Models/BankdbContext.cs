@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-
 namespace BankDB.Models
 {
     public partial class BankdbContext : DbContext
@@ -42,15 +41,11 @@ namespace BankDB.Models
 
             modelBuilder.Entity<Bank>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Name).IsUnicode(false);
             });
 
             modelBuilder.Entity<Customer>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.FirstName).IsUnicode(false);
 
                 entity.Property(e => e.LastName).IsUnicode(false);
@@ -63,8 +58,6 @@ namespace BankDB.Models
 
             modelBuilder.Entity<Transaction>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.HasOne(d => d.IbanNavigation)
                     .WithMany(p => p.Transaction)
                     .HasForeignKey(d => d.Iban)
