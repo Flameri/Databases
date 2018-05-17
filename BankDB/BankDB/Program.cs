@@ -13,9 +13,12 @@ namespace BankDB
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             Print();
-            
+            CreateBank();
+            UpdateBank();
+            DeleteBank();
             Console.WriteLine("\n<Enter> lopettaa ohjelman suorituksen!");
             Console.ReadLine();
+
         }
         static void CreateCustomer()
         {
@@ -61,6 +64,11 @@ namespace BankDB
         {
             BankRepository bankRepository = new BankRepository();
             bankRepository.Delete(4);
+        }
+        static void GetBankById()
+        {
+            CustomerRepository customeRepository = new CustomerRepository();
+
         }
         static void CreateTransaction()
         {
