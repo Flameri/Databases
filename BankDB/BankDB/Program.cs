@@ -16,9 +16,20 @@ namespace BankDB
             CreateBank();
             UpdateBank();
             DeleteBank();
+            GetBankById();
+            DeleteAccount();
+            GetAccountByIban();
+            CreateCustomer();
+            UpdateCustomer();
+            GetCustomerById();
             Console.WriteLine("\n<Enter> lopettaa ohjelman suorituksen!");
             Console.ReadLine();
 
+        }
+        static void DeleteAccount()
+        {
+            AccountRepository accountRepository = new AccountRepository();
+            accountRepository.DeleteAccount("FI4925678945");
         }
         static void CreateCustomer()
         {
@@ -41,6 +52,11 @@ namespace BankDB
         {
             CustomerRepository customerRepository = new CustomerRepository();
             customerRepository.DeleteCustomer(5);
+        }
+        static void GetCustomerById()
+        {
+            CustomerRepository customerRepository = new CustomerRepository();
+            customerRepository.GetCustomerById(2);
         }
         static void CreateBank()
         {
@@ -67,8 +83,8 @@ namespace BankDB
         }
         static void GetBankById()
         {
-            CustomerRepository customeRepository = new CustomerRepository();
-
+            BankRepository bankRepository = new BankRepository();
+            bankRepository.GetBankById(2);
         }
         static void CreateTransaction()
         {
@@ -82,6 +98,11 @@ namespace BankDB
                 TimeStamp = DateTime.Today
             };
             accountRepository.CreateTransaction(transaction);
+        }
+        static void GetAccountByIban()
+        {
+            AccountRepository accountRepository = new AccountRepository();
+            accountRepository.GetAccountById("FI497894563");
         }
         static void Print()
         {
