@@ -22,6 +22,7 @@ namespace BankDB
             CreateCustomer();
             UpdateCustomer();
             GetCustomerById();
+            GetTransactionById();
             Console.WriteLine("\n<Enter> lopettaa ohjelman suorituksen!");
             Console.ReadLine();
 
@@ -98,6 +99,11 @@ namespace BankDB
                 TimeStamp = DateTime.Today
             };
             accountRepository.CreateTransaction(transaction);
+        }
+        static void GetTransactionById()
+        {
+            TransactionRepository transactionRepository = new TransactionRepository();
+            transactionRepository.GetTransactionById(4);
         }
         static void GetAccountByIban()
         {
